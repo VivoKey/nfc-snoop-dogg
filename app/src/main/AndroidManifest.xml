@@ -1,0 +1,12 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.NFC" />
+
+    <application>
+        <provider
+            android:name=".SnoopContentProvider"
+            android:authorities="nfcsnoop"
+            android:exported="true" />
+    </application>
+
+</manifest>

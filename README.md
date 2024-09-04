@@ -16,6 +16,12 @@ This project is free and open-source software.
 Installation
 ------------
 
+First you must enable NFC NCI unfiltered log in Developer Options.
+
+![](settings.png)
+
+Now install the APK using adb.
+
 ```
 $ adb install nfc-snoop-dogg.apk
 ```
@@ -23,9 +29,15 @@ $ adb install nfc-snoop-dogg.apk
 Usage
 -----
 
+On Linux systems execute the following command to launch:
 ```
-$ adb shell '$(content read --uri content://nfcsnoop)'
+adb shell '$(content read --uri content://nfcsnoop)'
 ```
 
-![](settings.png)
+On Windows systems you must execute the command using double quotes:
+```
+adb shell "$(content read --uri content://nfcsnoop)"
+```
+
+
 

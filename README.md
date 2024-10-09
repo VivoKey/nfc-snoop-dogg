@@ -13,31 +13,20 @@ Thanks to [@rileyg98](https://github.com/VivoKey/NFCSnoopDecoder) and [@snake-4]
 
 This project is free and open-source software.
 
-Installation
-------------
+Usage Instructions
+------------------
 
-First you must enable NFC NCI unfiltered log in Developer Options.
+1. [Download](https://github.com/VivoKey/nfc-snoop-dogg/releases/download/v1.0.0/nfc-snoop-dogg.apk) and install the APK file:
+   ```shell
+   adb install nfc-snoop-dogg.apk
+   ```
 
-![](settings.png)
+2. Enable **NFC NCI unfiltered log**:
 
-Now install the APK using adb.
+   ![](settings.png)
 
-```
-$ adb install nfc-snoop-dogg.apk
-```
-
-Usage
------
-
-On Linux systems execute the following command to launch:
-```
-adb shell '$(content read --uri content://nfcsnoop)'
-```
-
-On Windows systems you must execute the command using double quotes:
-```
-adb shell "$(content read --uri content://nfcsnoop)"
-```
-
-
+3. Execute the following command to start capturing live NFC packets:
+   ```shell
+   adb shell "content read --uri content://nfcsnoop | sh"
+   ```
 

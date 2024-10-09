@@ -109,7 +109,7 @@ public class NCIDecoder {
     static class NCIControlPacket extends NCIPacket {
         public byte groupID;
         public byte opcodeID;
-        public byte payloadLength;
+        public int payloadLength;
         public byte[] payload;
 
         public String getControlOpcodeTypeString() {
@@ -150,20 +150,20 @@ public class NCIDecoder {
             super(direction, data, timestamp);
             this.groupID = (byte)(rawData[0] & 0b0000_1111);
             this.opcodeID = (byte)(rawData[1] & 0b0011_1111);
-            this.payloadLength = rawData[2];
+            this.payloadLength = Byte.toUnsignedInt(rawData[2]);
             this.payload = Arrays.copyOfRange(rawData, 3, 3 + this.payloadLength);
         }
     }
 
     static class NCIDataPacket extends NCIPacket {
         public byte connID;
-        public byte payloadLength;
+        public int payloadLength;
         public byte[] payload;
 
         public NCIDataPacket(PacketDirection direction, byte[] data, long timestamp) {
             super(direction, data, timestamp);
             this.connID = (byte)(rawData[0] & 0b0000_1111);
-            this.payloadLength = rawData[2];
+            this.payloadLength = Byte.toUnsignedInt(rawData[2]);
             this.payload = Arrays.copyOfRange(rawData, 3, 3 + this.payloadLength);
         }
     }
